@@ -73,8 +73,8 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "nodemon index.js --trace-warnings",
-    "test": "nodemon index.js --trace-warnings",
+    "start": "nodemon index.js",
+    "test": "jest",
     "build": "ncc build index.js -o dist"
   },
   "author": "Ari LiVigni",

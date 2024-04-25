@@ -44,10 +44,11 @@ async function createComment(body) {
   });
 }
 
-async function addTeams() {
+async function addTeams(team) {
+  core.debug(`Adding team ${team} to the repository ${repoName}`);
   return await octokit.request("PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}", {
     org: organization,
-    team_slug: teams,
+    team_slug: team,
     owner: organization,
     repo: repoName,
     permission: "admin",
@@ -126,8 +127,8 @@ async function addTeamsToRepo() {
   try {
     const teamList = teams.split(" ");
     for (let team of teamList) {
-      await addTeams();
-      core.info(`Team ${team} added to the repository ${repoName}`);
+      core.info(`Adding team ${team} to the repository ${repoName}`);
+      await addTeams(team.trim());
     }
     await createComment(`Teams added to the repository ${repoName}`);
   } catch (error) {
