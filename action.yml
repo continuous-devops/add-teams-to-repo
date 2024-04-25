@@ -1,6 +1,9 @@
 name: "add-teams-to-repo"
 description: "An action to add teams to a repository in an organization"
 inputs:
+  organization:
+    description: "GitHub organization name"
+    required: true
   repo_name:
     description: "GitHub repository name to add teams to"
     required: true
