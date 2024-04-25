@@ -1,0 +1,23 @@
+name: "add-teams-to-repo"
+description: "An action to add teams to a repository in an organization"
+inputs:
+  repo_name:
+    description: "GitHub repository name to add teams to"
+    required: true
+  teams:
+    description: "GitHub teams to add to the repository"
+    required: true
+  pat:
+    description: "Personal access token if using that to auth instead of an app"
+    required: false
+  api_url:
+    description: "Source GitHub API URL"
+    required: false
+    default: "https://api.github.com"
+  is_debug:
+    description: "Debug mode"
+    required: false
+    default: "true"
+runs:
+  using: "node20"
+  main: "dist/index.js"
